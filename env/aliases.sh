@@ -7,7 +7,7 @@ alias .5='cd ../../../../..'
 alias ~='cd ~'
 
 # Easy report
-alias ls='ls -1hG'
+alias ls='ls -1h --color'
 alias l='ls -l'
 alias ll='ls -lA'
 alias lr='ls -R'
