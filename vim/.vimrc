@@ -9,7 +9,7 @@ call plug#begin('~/.dotfiles/vim/.vim/plugged')
 Plug 'morhetz/gruvbox'
 
 " GUI enhancements
-Plug 'vim-airline/vim-airline'          " better status bar
+Plug 'vim-airline/vim-airline'  " better status bar
 
 call plug#end()
 
