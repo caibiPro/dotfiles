@@ -39,6 +39,7 @@ alias doc='cd ~/Documents && ls -lA'
 alias c='clear'
 alias cat='bat'
 alias e='exit'
+alias aliasg='alias | grep '
 
 # Developer shortcuts
 alias python='python3'
