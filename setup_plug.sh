@@ -52,21 +52,6 @@ else
     echo "plugin zsh-completions found, skip installation..."
 fi
 
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-    echo "MacOS"
-    # # Check for Homebrew and install if we don't have it
-    which brew 1>/dev/null
-    if [[ $? == 0 ]]; then
-        echo "command found"
-    else
-        echo "command didn't find"
-        echo "start to install homebrew"
-        # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-elif [[ "$OSTYPE" =~ ^linux ]]; then
-    echo "Linux"
-fi
-
 # # Check for Homebrew and install if we don't have it in MacOs
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo "MacOS..."

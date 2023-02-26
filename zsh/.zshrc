@@ -35,7 +35,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases.
 source $DOTFILES/env/aliases.sh
 
-# Functions
+# Functions.
 source $DOTFILES/env/functions.sh
 
 # Input editing and Keybindings.
