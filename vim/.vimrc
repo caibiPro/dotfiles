@@ -9,7 +9,8 @@ call plug#begin('~/.dotfiles/vim/.vim/plugged')
 Plug 'morhetz/gruvbox'
 
 " GUI enhancements
-Plug 'vim-airline/vim-airline'  " better status bar
+" Plug 'vim-airline/vim-airline'  " better status bar
+Plug 'itchyny/lightline.vim'    " light statusline plugin
 
 call plug#end()
 
@@ -22,7 +23,7 @@ call plug#end()
 set t_Co=256                    " enable 256-color mode
 set background=dark
 colorscheme gruvbox
-let g:airline_theme='gruvbox'
+" let g:airline_theme='gruvbox'
 
 " Spaces & Tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -43,6 +44,7 @@ set nowrap                      " don't wrap text
 set showmatch                   " highlight parentheses for matching
 set noshowmode                  " --INSERT-- is unncessary because of plug-in
 set cursorline                  " highlight current line
+set laststatus=2
     
 " Searching
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
