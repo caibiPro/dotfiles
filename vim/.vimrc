@@ -9,8 +9,8 @@ call plug#begin('~/.dotfiles/vim/.vim/plugged')
 Plug 'morhetz/gruvbox'
 
 " GUI enhancements
-" Plug 'vim-airline/vim-airline'  " better status bar
 Plug 'itchyny/lightline.vim'    " light statusline plugin
+Plug 'sheerun/vim-polyglot'     " improved syntax highlighting for various languages
 
 call plug#end()
 
@@ -23,7 +23,7 @@ call plug#end()
 set t_Co=256                    " enable 256-color mode
 set background=dark
 colorscheme gruvbox
-" let g:airline_theme='gruvbox'
+let g:lightline = {'colorscheme' : 'wombat'}
 
 " Spaces & Tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
