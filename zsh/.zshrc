@@ -40,3 +40,6 @@ source $DOTFILES/env/functions.sh
 
 # Input editing and Keybindings.
 source $DOTFILES/env/inputrc.sh
+
+# Shell funciton to help broot cd the directory
+source $HOME/.config/broot/launcher/bash/br
