@@ -1,4 +1,6 @@
 if [[ "$OSTYPE" =~ ^darwin ]]; then
+    # MacOS ruby PATH
+    export PATH="$HOME/.ruby/bin:$PATH"
     # MacOS add Homebrew PATH
     eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ "$OSTYPE" =~ ^linux ]]; then
