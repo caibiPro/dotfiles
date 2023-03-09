@@ -37,8 +37,7 @@ alias doc='cd ~/Documents && ls -lA'
 
 # Shortcuts
 alias c='clear'
-alias bat='bat --paging=never'
-alias batcat='bat'
+alias cat='bat --paging=never'
 alias e='exit'
 alias aliasg='alias | grep '
 
