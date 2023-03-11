@@ -9,7 +9,7 @@ find . -name ".DS_Store" -exec rm {} \;
 
 # Link dotfiles in PROGRAMS to the $HOME directory
 for dir in "${PROGRAMS[@]}"; do
-    find "$DOTDIR/$dir" -name '.*' -maxdepth 1 -exec ln -sf {} "$HOME" \;
+    find "$DOTDIR/$dir" -maxdepth 1 -name '.*'  -exec ln -sf {} "$HOME" \;
     echo "link $DOTDIR/$dir done."
 done
 
