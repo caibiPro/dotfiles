@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: ShellCheck
+name: Check
 
 # Controls when the workflow will run
 on:
@@ -30,3 +30,20 @@ jobs:
             tmux
             vim
             zsh
+            
+      # Write-Good
+      - name: write-good action step
+        uses: tomwhross/write-good-action@v1.6
+    
+      - name: Get the write-good output
+        run: echo "${{ steps.write-good.outputs.result }}"
+        
+      - name: Post comment
+        uses: mshick/add-pr-comment@v1
+        if: ${{ steps.write-good.outputs.result }}
+        with:
+          message: |
+            ${{ steps.write-good.outputs.result }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
