@@ -9,6 +9,11 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agkozak" # set by `omz`
 
 # agkozak Settings
+AGKOZAK_USER_HOST_DISPLAY=0
+
+# Left-prompt-only Mode
+AGKOZAK_LEFT_PROMPT_ONLY=1
+
 # Blank Lines Between Prompts
 AGKOZAK_BLANK_LINES=1
 
