@@ -6,7 +6,7 @@ export DOTFILES="$HOME/.dotfiles"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Themes.
-ZSH_THEME="af-magic" # set by `omz`
+ZSH_THEME="refined" # set by `omz`
 
 # Case-sensitive completion.
 # CASE_SENSITIVE="true"
