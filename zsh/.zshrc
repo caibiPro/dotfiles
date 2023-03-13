@@ -8,6 +8,21 @@ export ZSH="$HOME/.oh-my-zsh"
 # Themes.
 ZSH_THEME="agkozak" # set by `omz`
 
+# agkozak Settings
+# Blank Lines Between Prompts
+AGKOZAK_BLANK_LINES=1
+
+# Single-line Prompt
+AGKOZAK_MULTILINE=0
+
+# Custom Prompt Colors
+AGKOZAK_COLORS_USER_HOST=cyan
+AGKOZAK_COLORS_PATH=yellow
+AGKOZAK_COLORS_PROMPT_CHAR='cyan'
+
+# Custom Git Symbols
+AGKOZAK_CUSTOM_SYMBOLS=('⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' 'S')
+
 # Case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -20,13 +35,13 @@ HIST_STAMPS="yyyy-mm-dd"
 # Plugins.
 # Plugins to load
 plugins=(
-    git
-    autojump
-    colored-man-pages
-    zsh-completions
-    zsh-autosuggestions
-    fast-syntax-highlighting
-    history-substring-search
+  git
+  autojump
+  colored-man-pages
+  zsh-completions
+  zsh-autosuggestions
+  fast-syntax-highlighting
+  history-substring-search
 )
 
 # Oh My Zsh.
