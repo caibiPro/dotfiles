@@ -6,7 +6,7 @@ export DOTFILES="$HOME/.dotfiles"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Themes.
-ZSH_THEME="spaceship" # set by `omz`
+ZSH_THEME="sunrise" # set by `omz`
 
 # Case-sensitive completion.
 # CASE_SENSITIVE="true"
