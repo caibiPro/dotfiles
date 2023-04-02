@@ -9,7 +9,7 @@ find . -name ".DS_Store" -exec rm {} \;
 
 # Link dotfiles in PROGRAMS to the $HOME directory
 for dir in "${PROGRAMS[@]}"; do
-    find "$DOTDIR/$dir" -maxdepth 1 -name '.*'  -exec ln -sf {} "$HOME" \;
+    find "$DOTDIR/$dir" -maxdepth 1 -name '.*' -exec ln -sf {} "$HOME" \;
     echo "link $DOTDIR/$dir done."
 done
 
@@ -68,3 +68,6 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     echo "Linux..."
 fi
+
+# # Install the ZSH prompt pure
+git clone https://github.com/sindresorhus/pure.git "$ZSH_CUSTOM/themes/pure"

@@ -6,7 +6,7 @@ export DOTFILES="$HOME/.dotfiles"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Themes.
-ZSH_THEME="skaro" # set by `omz`
+ZSH_THEME="" # set blank to use pure
 
 # Case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -40,3 +40,25 @@ source $DOTFILES/env/functions.sh
 
 # Input editing and Keybindings.
 source $DOTFILES/env/inputrc.sh
+
+# Add the path of the pure repo to $fpath
+fpath+=($ZSH_CUSTOM/themes/pure)
+
+# Initialize the prompt system
+autoload -U promptinit
+promptinit
+
+# Defines the prompt symbol.
+PURE_PROMPT_SYMBOL='➜'
+
+# Defines the prompt symbol in vi-mode
+PURE_PROMPT_VICMD_SYMBOL=':'
+
+# Change the path color
+zstyle :prompt:pure:path color cyan
+
+# Turn on git stash status
+zstyle :prompt:pure:git:stash show yes
+
+# Choose prompt system to pure
+prompt pure
