@@ -11,6 +11,11 @@ Plug 'joshdick/onedark.vim'
 " GUI enhancements
 Plug 'itchyny/lightline.vim'    " light statusline plugin
 Plug 'sheerun/vim-polyglot'     " improved syntax highlighting for various languages
+Plug 'scrooloose/nerdtree'      " tree explorer
+Plug 'tpope/vim-fugitive'       " git wrapperwa
+
+" Open files in NERDTree in read-only (or view) mode
+Plug 'twang817/nerdtree-view-plugin'    
 
 call plug#end()
 
@@ -32,10 +37,10 @@ if has('termguicolors')
     set t_Co=256
 endif
 
-
 set background=dark
 colorscheme onedark
 let g:lightline = {'colorscheme' : 'onedark'}
+let NERDTreeShowHidden=1
 
 " Spaces & Tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
