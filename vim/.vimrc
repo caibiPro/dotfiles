@@ -13,6 +13,7 @@ Plug 'itchyny/lightline.vim'    " light statusline plugin
 Plug 'sheerun/vim-polyglot'     " improved syntax highlighting for various languages
 Plug 'scrooloose/nerdtree'      " tree explorer
 Plug 'tpope/vim-fugitive'       " git wrapperwa
+Plug 'Exafunction/codeium.vim'  " codeium
 
 " Open files in NERDTree in read-only (or view) mode
 Plug 'twang817/nerdtree-view-plugin'    
