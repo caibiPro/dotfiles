@@ -1,6 +1,6 @@
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     # JDK
-    export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/openjdk-20.0.1/Contents/Home"
+    export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/azul-1.8.0_382/Contents/Home"
     # TOMCAT
     export CATALINA_HOME="$HOME/Documents/study/tomcat/apache-tomcat-9.0.78"
     # MacOS ruby PATH
