@@ -1,6 +1,6 @@
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     # JDK
-    export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/jbr-17.0.8.1/Contents/Home"
+    export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
     # TOMCAT
     export CATALINA_HOME="$HOME/Documents/tools/tomcat/apache-tomcat-9.0.78"
     # Maven
