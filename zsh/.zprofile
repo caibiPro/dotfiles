@@ -21,5 +21,6 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
     export PATH="$HOME/tools/maven/apache-maven-3.9.4/bin:$PATH"
 fi
 
+
 # Cargo Env PATH added
 . "$HOME/.cargo/env"
