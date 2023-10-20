@@ -1,6 +1,6 @@
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     # JDK
-    export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/azul-17.0.8.1/Contents/Home"
+    export JAVA_HOME="$HOME/Applications/Android Studio.app/Contents/jbr/Contents/Home"
     # TOMCAT
     export CATALINA_HOME="$HOME/Documents/tools/tomcat/apache-tomcat-9.0.78"
     # Maven
@@ -20,7 +20,6 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
     #Maven
     export PATH="$HOME/tools/maven/apache-maven-3.9.4/bin:$PATH"
 fi
-
 
 # Cargo Env PATH added
 . "$HOME/.cargo/env"
