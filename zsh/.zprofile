@@ -6,7 +6,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Maven
     export PATH="$HOME/Documents/tools/maven/apache-maven-3.9.4/bin:$PATH"
     # Android SDK Tools
-    export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+    export PATH="$HOME/Library/Android/sdk/platform-tools:$HOME/Library/Android/sdk/build-tools:$HOME/Library/Android/sdk/cmdline-tools:$PATH"
     # MacOS ruby PATH
     export PATH="$HOME/.ruby/bin:$PATH"
     # MacOS add Homebrew PATH
@@ -22,7 +22,6 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
     #Maven
     export PATH="$HOME/tools/maven/apache-maven-3.9.4/bin:$PATH"
 fi
-
 
 # Cargo Env PATH added
 . "$HOME/.cargo/env"
