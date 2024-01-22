@@ -9,6 +9,8 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
     # MacOS ruby PATH
     export PATH="$HOME/.ruby/bin:$PATH"
+    # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+    export PATH="$PATH:$HOME/.rvm/bin"
     # MacOS add Homebrew PATH
     eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ "$OSTYPE" =~ ^linux ]]; then
