@@ -9,6 +9,9 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
     # MacOS ruby PATH
     export PATH="$HOME/.ruby/bin:$PATH"
+    export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+    export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+    export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
     # MacOS add Homebrew PATH
     eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ "$OSTYPE" =~ ^linux ]]; then
