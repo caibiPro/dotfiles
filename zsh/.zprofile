@@ -12,8 +12,6 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
     export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
     export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
-    # ARM GCC
-    export PATH="$HOME/Documents/Study/stm32f103c8t6/opt/gcc-arm/bin:$PATH"
     # MacOS add Homebrew PATH
     eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ "$OSTYPE" =~ ^linux ]]; then
