@@ -1,12 +1,13 @@
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     # JDK
-    export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/corretto-11.0.23/Contents/Home"
+    export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/corretto-11.0.24/Contents/Home"
     # TOMCAT
     export CATALINA_HOME="$HOME/Documents/tools/tomcat/apache-tomcat-9.0.78"
     # Maven
     export PATH="$HOME/Documents/tools/maven/apache-maven-3.9.4/bin:$PATH"
     # Android SDK Tools
     export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+    export PATH="$HOME/Library/Android/sdk/build-tools/34.0.0:$PATH"
     # MacOS ruby PATH
     export PATH="$HOME/.ruby/bin:$PATH"
     export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
