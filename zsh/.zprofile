@@ -15,6 +15,8 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
     # MacOS add Homebrew PATH
     eval "$(/opt/homebrew/bin/brew shellenv)"
+    # Ruby
+    export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     # Linux add GEM PATH
     export GEM_HOME="$HOME/.gems"
