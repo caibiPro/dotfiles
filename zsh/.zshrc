@@ -1,24 +1,22 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH Path to your dotfiles.
+# Path to your dotfiles
 export DOTFILES="$HOME/.dotfiles"
 
-# Path to your oh-my-zsh installation.
+# Path to your oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# Themes.
-ZSH_THEME="" # set blank to use pure
-
-# Case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Disable marking untracked files under VCS as dirty.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# History.
+# History configuration
+HISTSIZE=50000
+SAVEHIST=50000
+HISTFILE=~/.zsh_history
 HIST_STAMPS="yyyy-mm-dd"
 
-# Plugins.
-# Plugins to load
+# Disable marking untracked files under VCS as dirty
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# ZSH theme (using pure prompt)
+ZSH_THEME=""
+
+# Plugins configuration
 plugins=(
   git
   autojump
@@ -29,36 +27,34 @@ plugins=(
   history-substring-search
 )
 
-# Oh My Zsh.
+# Load Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
-# Aliases.
+# Load custom configuration files
 source $DOTFILES/env/aliases.sh
-
-# Functions.
 source $DOTFILES/env/functions.sh
-
-# Input editing and Keybindings.
 source $DOTFILES/env/inputrc.sh
 
-# Add the path of the pure repo to $fpath
+# Pure prompt configuration
 fpath+=($ZSH_CUSTOM/themes/pure)
-
-# Initialize the prompt system
 autoload -U promptinit
 promptinit
 
-# Defines the prompt symbol.
+# Pure prompt customization
 PURE_PROMPT_SYMBOL='➜'
-
-# Defines the prompt symbol in vi-mode
 PURE_PROMPT_VICMD_SYMBOL=':'
-
-# Change the path color
 zstyle :prompt:pure:path color cyan
-
-# Turn on git stash status
 zstyle :prompt:pure:git:stash show yes
-
-# Choose prompt system to pure
 prompt pure
+
+# Additional ZSH options
+setopt AUTO_CD                # 'directory' is equivalent to 'cd directory'
+setopt AUTO_PUSHD             # Makes cd push each old directory onto the stack
+setopt PUSHD_IGNORE_DUPS      # Don't push duplicate directories onto the stack
+setopt EXTENDED_HISTORY       # Save timestamps in history
+setopt SHARE_HISTORY          # Share history between sessions
+setopt HIST_IGNORE_DUPS       # Don't record duplicate commands
+setopt HIST_IGNORE_SPACE      # Don't record commands starting with a space
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks from history
+setopt HIST_VERIFY            # Don't execute immediately upon history expansion
+setopt PROMPT_SUBST           # Allow prompt substitution
