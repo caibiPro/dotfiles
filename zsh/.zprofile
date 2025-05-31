@@ -16,6 +16,9 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH="$ANDROID_HOME/platform-tools:$PATH"
     export PATH="$ANDROID_HOME/emulator:$PATH"
     export PATH="$ANDROID_HOME/build-tools/34.0.0:$PATH"
+
+    # PostgreSQL
+    export PATH = "/opt/homebrew/opt/postgresql@15/bin:$PATH"
     
     # Maven
     export MAVEN_HOME="$HOME/Documents/tools/maven/apache-maven-3.9.4"
