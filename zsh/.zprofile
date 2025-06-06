@@ -7,6 +7,9 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Homebrew (should be early in PATH)
     eval "$(/opt/homebrew/bin/brew shellenv)"
     
+    # Added by `rbenv init`
+    eval "$(rbenv init - --no-rehash zsh)"
+    
     # Java configuration
     export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/corretto-17.0.13/Contents/Home"
     export PATH="$JAVA_HOME/bin:$PATH"
@@ -18,7 +21,12 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH="$ANDROID_HOME/build-tools/34.0.0:$PATH"
 
     # PostgreSQL
-    export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+    export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+    export PGDATA="/opt/homebrew/var/postgresql@16"
+
+    # Rideshare 数据库配置
+    export DB_URL="postgres://postgres:@localhost:5432/postgres"
+    export DATABASE_URL="postgres://owner:@localhost:5432/rideshare_development"
     
     # Maven
     export MAVEN_HOME="$HOME/Documents/tools/maven/apache-maven-3.9.4"
@@ -27,14 +35,6 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Tomcat
     export CATALINA_HOME="$HOME/Documents/tools/tomcat/apache-tomcat-9.0.78"
     export PATH="$CATALINA_HOME/bin:$PATH"
-    
-    # Ruby configuration
-    export RUBY_HOME="/opt/homebrew/opt/ruby"
-    export PATH="$RUBY_HOME/bin:$PATH"
-    export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
-    export PATH="$HOME/.ruby/bin:$PATH"
-    export LDFLAGS="-L$RUBY_HOME/lib"
-    export CPPFLAGS="-I$RUBY_HOME/include"
     
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     # Java configuration
