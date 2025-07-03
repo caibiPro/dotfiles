@@ -36,6 +36,10 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Tomcat
     export CATALINA_HOME="$HOME/Documents/tools/tomcat/apache-tomcat-9.0.78"
     export PATH="$CATALINA_HOME/bin:$PATH"
+
+    # bun
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
     
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     # Java configuration

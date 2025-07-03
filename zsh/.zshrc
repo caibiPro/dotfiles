@@ -58,3 +58,6 @@ setopt HIST_IGNORE_SPACE      # Don't record commands starting with a space
 setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks from history
 setopt HIST_VERIFY            # Don't execute immediately upon history expansion
 setopt PROMPT_SUBST           # Allow prompt substitution
+
+# bun completions
+[ -s "/Users/mingqing/.bun/_bun" ] && source "/Users/mingqing/.bun/_bun"
