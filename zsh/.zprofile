@@ -12,7 +12,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
 
     # Added by `rbenv init`
-    eval "$(rbenv init - zsh)"
+    eval "$(rbenv init - --no-rehash zsh)"
 
     # Java configuration
     export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/ms-21.0.8/Contents/Home"
