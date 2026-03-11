@@ -26,17 +26,16 @@ call plug#end()
 
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('termguicolors')
+if has('termguicolors') && ($COLORTERM == 'truecolor' || $COLORTERM == '24bit')
     " Turns on true terminal colors
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
     " Turns on 24-bit RGB color support
     set termguicolors
-
-    " Defines how many colors should be used. (maximum: 256, minimum: 0)
-    set t_Co=256
 endif
+
+set t_Co=256
 
 set background=dark
 colorscheme onedark
