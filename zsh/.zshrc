@@ -26,15 +26,15 @@ plugins=(
 )
 
 # Add extra completion directories before Oh My Zsh runs compinit.
-fpath=(/Users/mingqing/.docker/completions $fpath)
+fpath=($HOME/.docker/completions $fpath)
 
 # Load Oh My Zsh
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # Load custom configuration files
-source $DOTFILES/env/aliases.sh
-source $DOTFILES/env/functions.sh
-source $DOTFILES/env/inputrc.sh
+source "$DOTFILES/env/aliases.sh"
+source "$DOTFILES/env/functions.sh"
+source "$DOTFILES/env/inputrc.sh"
 
 # Pure prompt configuration
 fpath+=($ZSH_CUSTOM/themes/pure)
@@ -61,4 +61,4 @@ setopt HIST_VERIFY            # Don't execute immediately upon history expansion
 setopt PROMPT_SUBST           # Allow prompt substitution
 
 # bun completions
-[ -s "/Users/mingqing/.bun/_bun" ] && source "/Users/mingqing/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

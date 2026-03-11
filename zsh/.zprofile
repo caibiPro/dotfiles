@@ -46,7 +46,10 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH="$BUN_INSTALL/bin:$PATH"
 
     # Added by Antigravity
-    export PATH="/Users/mingqing/.antigravity/antigravity/bin:$PATH"
+    export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+    # OpenCode
+    export PATH="$HOME/.opencode/bin:$PATH"
 
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     # Java configuration
@@ -84,5 +87,3 @@ if [ -f "$HOME/.dotfiles/env/private.local.sh" ]; then
     source "$HOME/.dotfiles/env/private.local.sh"
 fi
 
-# OpenCode
-export PATH=/Users/mingqing/.opencode/bin:$PATH

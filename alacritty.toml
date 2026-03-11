@@ -65,3 +65,67 @@ blue    = "0x61afef"
 magenta = "0xc678dd"
 cyan    = "0x56b6c2"
 white   = "0xffffff"
+
+[[keyboard.bindings]]
+key = "R"
+mods = "Command"
+mode = "~Vi|~Search"
+chars = "\f"
+
+[[keyboard.bindings]]
+key = "R"
+mods = "Command"
+mode = "~Vi|~Search"
+action = "ClearHistory"
+
+[[keyboard.bindings]]
+key = "W"
+mods = "Command"
+action = "Hide"
+
+[[keyboard.bindings]]
+key = "W"
+mods = "Command|Shift"
+action = "Quit"
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Command"
+action = "SpawnNewInstance"
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Command"
+action = "CreateNewWindow"
+
+[[keyboard.bindings]]
+key = "Left"
+mods = "Alt"
+chars = "\u001bb"
+
+[[keyboard.bindings]]
+key = "Right"
+mods = "Alt"
+chars = "\u001bf"
+
+[[keyboard.bindings]]
+key = "Left"
+mods = "Command"
+chars = "\u001bOH"
+mode = "AppCursor"
+
+[[keyboard.bindings]]
+key = "Right"
+mods = "Command"
+chars = "\u001bOF"
+mode = "AppCursor"
+
+[[keyboard.bindings]]
+key = "Back"
+mods = "Command"
+chars = "\u0015"
+
+[[keyboard.bindings]]
+key = "Back"
+mods = "Alt"
+chars = "\u001b\u007f"
