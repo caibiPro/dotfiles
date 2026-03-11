@@ -1,13 +1,11 @@
 # Path to your dotfiles
 export DOTFILES="$HOME/.dotfiles"
+typeset -U fpath FPATH
 
 # Path to your oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
 # History configuration
-HISTSIZE=50000
-SAVEHIST=50000
-HISTFILE=~/.zsh_history
 HIST_STAMPS="yyyy-mm-dd"
 
 # Disable marking untracked files under VCS as dirty
@@ -26,6 +24,9 @@ plugins=(
   fast-syntax-highlighting
   history-substring-search
 )
+
+# Add extra completion directories before Oh My Zsh runs compinit.
+fpath=(/Users/mingqing/.docker/completions $fpath)
 
 # Load Oh My Zsh
 source $ZSH/oh-my-zsh.sh
