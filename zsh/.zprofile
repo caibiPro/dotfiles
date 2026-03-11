@@ -12,17 +12,17 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
 
     # Added by `rbenv init`
-    eval "$(rbenv init - --no-rehash zsh)"
+    eval "$(rbenv init - zsh)"
 
     # Java configuration
-    export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/corretto-17.0.13/Contents/Home"
+    export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/ms-21.0.8/Contents/Home"
     export PATH="$JAVA_HOME/bin:$PATH"
 
     # Android configuration
     export ANDROID_HOME="$HOME/Library/Android/sdk"
     export PATH="$ANDROID_HOME/platform-tools:$PATH"
     export PATH="$ANDROID_HOME/emulator:$PATH"
-    export PATH="$ANDROID_HOME/build-tools/34.0.0:$PATH"
+    export PATH="$ANDROID_HOME/build-tools/36.1.0:$PATH"
 
     # PostgreSQL
     export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
@@ -44,6 +44,9 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # bun
     export BUN_INSTALL="$HOME/.bun"
     export PATH="$BUN_INSTALL/bin:$PATH"
+
+    # Added by Antigravity
+    export PATH="/Users/mingqing/.antigravity/antigravity/bin:$PATH"
 
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     # Java configuration
@@ -80,3 +83,6 @@ fi
 if [ -f "$HOME/.dotfiles/env/private.local.sh" ]; then
     source "$HOME/.dotfiles/env/private.local.sh"
 fi
+
+# OpenCode
+export PATH=/Users/mingqing/.opencode/bin:$PATH
