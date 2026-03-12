@@ -37,9 +37,14 @@ endif
 
 set t_Co=256
 
-set background=dark
-colorscheme onedark
-let g:lightline = {'colorscheme' : 'onedark'}
+set background=light
+if &background ==# 'light'
+    colorscheme shine
+    let g:lightline = {'colorscheme' : 'selenized_light'}
+else
+    colorscheme onedark
+    let g:lightline = {'colorscheme' : 'one'}
+endif
 let NERDTreeShowHidden=1
 
 " Spaces & Tabs
