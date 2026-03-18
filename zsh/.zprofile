@@ -12,7 +12,9 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
 
     # Added by `rbenv init`
-    eval "$(rbenv init - --no-rehash zsh)"
+    if command -v rbenv >/dev/null 2>&1; then
+        eval "$(rbenv init - --no-rehash zsh)"
+    fi
 
     # Java configuration
     export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/ms-21.0.8/Contents/Home"
@@ -27,11 +29,6 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # PostgreSQL
     export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
     export PGDATA="/opt/homebrew/var/postgresql@16"
-
-    # Rideshare 数据库配置
-    export RIDESHARE_DB_PASSWORD=$(openssl rand -hex 12)
-    export DB_URL="postgres://postgres:@localhost:5432/postgres"
-    export DATABASE_URL="postgres://owner:@localhost:5432/rideshare_development"
 
     # Maven
     export MAVEN_HOME="$HOME/Documents/tools/maven/apache-maven-3.9.4"
@@ -86,4 +83,3 @@ fi
 if [ -f "$HOME/.dotfiles/env/private.local.sh" ]; then
     source "$HOME/.dotfiles/env/private.local.sh"
 fi
-

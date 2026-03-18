@@ -8,6 +8,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # History configuration
 HIST_STAMPS="yyyy-mm-dd"
 
+# Avoid background update checks during shell startup.
+DISABLE_AUTO_UPDATE="true"
+
 # Disable marking untracked files under VCS as dirty
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
