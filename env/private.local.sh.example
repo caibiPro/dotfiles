@@ -1,0 +1,15 @@
+# Machine-specific paths and overrides go here.
+
+# export ANDROID_HOME="$HOME/Library/Android/sdk"
+# path=(
+#   "$ANDROID_HOME/platform-tools"
+#   "$ANDROID_HOME/emulator"
+#   "$ANDROID_HOME/build-tools/36.1.0"
+#   $path
+# )
+
+# export BUN_INSTALL="$HOME/.bun"
+# path=("$BUN_INSTALL/bin" $path)
+
+# path=("$HOME/.antigravity/antigravity/bin" $path)
+# path=("$HOME/.opencode/bin" $path)

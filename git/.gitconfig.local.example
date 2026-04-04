@@ -1,0 +1,6 @@
+[user]
+    name = Your Name
+    email = you@example.com
+
+# This file is optional but recommended.
+# If it is missing, Git may fall back to auto-detected identity on a new machine.

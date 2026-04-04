@@ -4,15 +4,22 @@ typeset -U fpath FPATH
 
 # Path to your oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CACHE_DIR="$HOME/.cache/oh-my-zsh"
 
-# History configuration
-HIST_STAMPS="yyyy-mm-dd"
-
-# Avoid background update checks during shell startup.
-DISABLE_AUTO_UPDATE="true"
+# Oh My Zsh update behavior
+zstyle ':omz:update' mode reminder
+zstyle ':omz:update' frequency 14
+zstyle ':omz:update' verbose minimal
 
 # Disable marking untracked files under VCS as dirty
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Completion behavior
+COMPLETION_WAITING_DOTS="true"
+
+# Plugin tuning
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 # ZSH theme (using pure prompt)
 ZSH_THEME=""
@@ -20,9 +27,6 @@ ZSH_THEME=""
 # Plugins configuration
 plugins=(
   git
-  autojump
-  colored-man-pages
-  zsh-completions
   zsh-autosuggestions
   fast-syntax-highlighting
   history-substring-search
@@ -34,10 +38,12 @@ fpath=($HOME/.docker/completions $fpath)
 # Load Oh My Zsh
 source "$ZSH/oh-my-zsh.sh"
 
-# Load custom configuration files
+# Shared environment and shell helpers
+source "$DOTFILES/env/environment.sh"
 source "$DOTFILES/env/aliases.sh"
 source "$DOTFILES/env/functions.sh"
-source "$DOTFILES/env/inputrc.sh"
+source "$DOTFILES/zsh/history.zsh"
+source "$DOTFILES/zsh/keybindings.zsh"
 
 # Pure prompt configuration
 fpath+=($ZSH_CUSTOM/themes/pure)
@@ -45,6 +51,7 @@ autoload -U promptinit
 promptinit
 
 # Pure prompt customization
+PURE_CMD_MAX_EXEC_TIME=10
 PURE_PROMPT_SYMBOL='➜'
 PURE_PROMPT_VICMD_SYMBOL=':'
 zstyle :prompt:pure:path color cyan
@@ -53,15 +60,18 @@ prompt pure
 
 # Additional ZSH options
 setopt AUTO_CD                # 'directory' is equivalent to 'cd directory'
-setopt AUTO_PUSHD             # Makes cd push each old directory onto the stack
-setopt PUSHD_IGNORE_DUPS      # Don't push duplicate directories onto the stack
-setopt EXTENDED_HISTORY       # Save timestamps in history
-setopt SHARE_HISTORY          # Share history between sessions
-setopt HIST_IGNORE_DUPS       # Don't record duplicate commands
-setopt HIST_IGNORE_SPACE      # Don't record commands starting with a space
-setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks from history
-setopt HIST_VERIFY            # Don't execute immediately upon history expansion
 setopt PROMPT_SUBST           # Allow prompt substitution
+
+# fzf / zoxide integration
+if [[ -t 0 ]]; then
+  if command -v fzf >/dev/null 2>&1; then
+    source <(fzf --zsh)
+  fi
+
+  if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+  fi
+fi
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

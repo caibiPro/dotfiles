@@ -1,4 +1,5 @@
 .DS_Store
-vim/.vim/plugged
+.dotfiles-backups/
 ssh/
 env/private.local.sh
+git/.gitconfig.local

@@ -1,11 +1,24 @@
-tap "homebrew/bundle"
-# Shell extension to jump to frequently used directories
-brew "autojump"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
-# Distributed revision control system
+# Core CLI
 brew "git"
-# Simplified and community-driven man pages
-brew "tldr"
-# Terminal multiplexer
 brew "tmux"
+brew "bat"
+brew "fzf"
+brew "ripgrep"
+brew "fd"
+brew "jq"
+brew "yq"
+brew "eza"
+brew "zoxide"
+brew "gh"
+brew "tldr"
+
+# Shell and editor
+brew "neovim"
+
+# Language runtimes
+brew "node"
+brew "python@3.13"
+
+# Terminal
+cask "ghostty"
+cask "font-maple-mono-nf-cn"
