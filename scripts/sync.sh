@@ -26,7 +26,7 @@ backup_existing() {
   fi
 
   if [[ -e "$target" || -L "$target" ]]; then
-    relative_target="${target#$HOME/}"
+    relative_target="${target#"$HOME"/}"
     ensure_parent_dir "$BACKUP_DIR/$relative_target"
     mv "$target" "$BACKUP_DIR/$relative_target"
     log "backed up $target"

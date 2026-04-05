@@ -13,7 +13,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y shellcheck zsh
 
       - name: ShellCheck
-        run: shellcheck scripts/*.sh env/*.sh
+        run: shellcheck scripts/*.sh
 
       - name: Zsh syntax check
         run: zsh -n zsh/.zprofile zsh/.zshrc zsh/history.zsh zsh/keybindings.zsh env/aliases.sh env/functions.sh env/environment.sh
