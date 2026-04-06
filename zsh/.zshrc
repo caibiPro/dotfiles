@@ -33,7 +33,7 @@ plugins=(
 )
 
 # Add extra completion directories before Oh My Zsh runs compinit.
-fpath=($HOME/.docker/completions $fpath)
+[[ -d "$HOME/.docker/completions" ]] && fpath=($HOME/.docker/completions $fpath)
 
 # Load Oh My Zsh
 source "$ZSH/oh-my-zsh.sh"
@@ -72,6 +72,3 @@ if [[ -t 0 ]]; then
     eval "$(zoxide init zsh)"
   fi
 fi
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

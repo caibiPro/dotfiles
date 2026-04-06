@@ -8,8 +8,11 @@
 #   $path
 # )
 
-# export BUN_INSTALL="$HOME/.bun"
-# path=("$BUN_INSTALL/bin" $path)
+# if [[ -d "$HOME/.bun/bin" ]]; then
+#   export BUN_INSTALL="$HOME/.bun"
+#   path=("$BUN_INSTALL/bin" $path)
+#   [[ -s "$BUN_INSTALL/_bun" ]] && source "$BUN_INSTALL/_bun"
+# fi
 
-# path=("$HOME/.antigravity/antigravity/bin" $path)
-# path=("$HOME/.opencode/bin" $path)
+# [[ -d "$HOME/.antigravity/antigravity/bin" ]] && path=("$HOME/.antigravity/antigravity/bin" $path)
+# [[ -d "$HOME/.opencode/bin" ]] && path=("$HOME/.opencode/bin" $path)
