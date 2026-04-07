@@ -12,19 +12,18 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
         eval "$(/usr/local/bin/brew shellenv)"
     fi
 
-    # MacPorts (if available, prepend to PATH)
-    [[ -d /opt/local/bin ]] && path=(/opt/local/bin /opt/local/sbin $path)
+    # MacPorts is only preferred on older macOS where bootstrap uses it.
+    _macos_ver="$(sw_vers -productVersion 2>/dev/null | cut -d. -f1)"
+    if [[ -n "$_macos_ver" && "$_macos_ver" -lt 14 && -x /opt/local/bin/port ]]; then
+        path=(/opt/local/bin /opt/local/sbin $path)
+    fi
+    unset _macos_ver
 
     # Prefer Homebrew Python over macOS Command Line Tools Python.
     local _py=("${HOMEBREW_PREFIX:-/opt/homebrew}"/opt/python@3.*/libexec/bin(nNOn))
     (( $#_py )) && path=("$_py[1]" $path)
     unset _py
 
-fi
-
-# Private local environment variables (early load for overrides like JAVA_HOME)
-if [ -f "$HOME/.dotfiles/env/private.local.sh" ]; then
-    source "$HOME/.dotfiles/env/private.local.sh"
 fi
 
 # Cargo environment
@@ -36,6 +35,11 @@ fi
 # Shared environment
 if [ -f "$HOME/.dotfiles/env/environment.sh" ]; then
     source "$HOME/.dotfiles/env/environment.sh"
+fi
+
+# Private local environment variables win over shared defaults and can set JAVA_HOME.
+if [ -f "$HOME/.dotfiles/env/private.local.sh" ]; then
+    source "$HOME/.dotfiles/env/private.local.sh"
 fi
 
 # Java configuration — auto-detect; switch with jdk() at runtime
