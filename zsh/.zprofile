@@ -8,17 +8,24 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     # Homebrew (should be early in PATH)
     if [[ -x /opt/homebrew/bin/brew ]]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"
+    elif [[ -x /usr/local/bin/brew ]]; then
+        eval "$(/usr/local/bin/brew shellenv)"
     fi
 
+    # MacPorts (if available, prepend to PATH)
+    [[ -d /opt/local/bin ]] && path=(/opt/local/bin /opt/local/sbin $path)
+
     # Prefer Homebrew Python over macOS Command Line Tools Python.
-    [[ -d /opt/homebrew/opt/python@3.13/libexec/bin ]] && path=(
-        /opt/homebrew/opt/python@3.13/libexec/bin
-        $path
-    )
+    local _py=("${HOMEBREW_PREFIX:-/opt/homebrew}"/opt/python@3.*/libexec/bin(nNOn))
+    (( $#_py )) && path=("$_py[1]" $path)
+    unset _py
 
     # Java configuration
     if [[ -x /usr/libexec/java_home ]]; then
-        export JAVA_HOME="$(/usr/libexec/java_home -v 21 2>/dev/null)"
+        local _java_home
+        _java_home="$(/usr/libexec/java_home -v 17 2>/dev/null || /usr/libexec/java_home -v 21 2>/dev/null || /usr/libexec/java_home 2>/dev/null)"
+        [[ -n "$_java_home" ]] && export JAVA_HOME="$_java_home"
+        unset _java_home
     fi
     [[ -n "$JAVA_HOME" && -d "$JAVA_HOME/bin" ]] && path=(
         "$JAVA_HOME/bin"
