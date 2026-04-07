@@ -20,28 +20,11 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     (( $#_py )) && path=("$_py[1]" $path)
     unset _py
 
-    # Java configuration
-    if [[ -x /usr/libexec/java_home ]]; then
-        local _java_home
-        _java_home="$(/usr/libexec/java_home -v 17 2>/dev/null || /usr/libexec/java_home -v 21 2>/dev/null || /usr/libexec/java_home 2>/dev/null)"
-        [[ -n "$_java_home" ]] && export JAVA_HOME="$_java_home"
-        unset _java_home
-    fi
-    [[ -n "$JAVA_HOME" && -d "$JAVA_HOME/bin" ]] && path=(
-        "$JAVA_HOME/bin"
-        $path
-    )
+fi
 
-elif [[ "$OSTYPE" =~ ^linux ]]; then
-    # Java configuration
-    if [[ -d /usr/lib/jvm/java-11-openjdk-amd64/bin ]]; then
-        export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
-        path=(
-            "$JAVA_HOME/bin"
-            $path
-        )
-    fi
-
+# Private local environment variables (early load for overrides like JAVA_HOME)
+if [ -f "$HOME/.dotfiles/env/private.local.sh" ]; then
+    source "$HOME/.dotfiles/env/private.local.sh"
 fi
 
 # Cargo environment
@@ -55,7 +38,21 @@ if [ -f "$HOME/.dotfiles/env/environment.sh" ]; then
     source "$HOME/.dotfiles/env/environment.sh"
 fi
 
-# Private local environment variables
-if [ -f "$HOME/.dotfiles/env/private.local.sh" ]; then
-    source "$HOME/.dotfiles/env/private.local.sh"
+# Java configuration — auto-detect; switch with jdk() at runtime
+if [[ -z "$JAVA_HOME" ]]; then
+    if [[ -x /usr/libexec/java_home ]]; then
+        # macOS: system default (highest installed version)
+        JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)"
+    elif [[ -d /usr/lib/jvm ]]; then
+        # Linux: pick first available JDK
+        local _d
+        for _d in /usr/lib/jvm/java-*-openjdk-*(N); do
+            [[ -x "$_d/bin/java" ]] && JAVA_HOME="$_d" && break
+        done
+        unset _d
+    fi
 fi
+[[ -n "$JAVA_HOME" && -d "$JAVA_HOME/bin" ]] && {
+    export JAVA_HOME
+    path=("$JAVA_HOME/bin" $path)
+}
