@@ -14,7 +14,7 @@ Personal dotfiles for a macOS-first, Linux-compatible terminal workflow.
 - `psql` for interactive PostgreSQL defaults
 - `ghostty` for terminal UI on macOS
 - `nvim` as the only editor managed by this repo
-- `Brewfile` for the macOS package set
+- `Brewfile` for macOS GUI apps and font casks
 - GitHub Actions checks for shell and zsh syntax
 
 ## Layout
@@ -62,9 +62,10 @@ What bootstrap does:
 
 - On macOS:
   - installs Homebrew if missing
-  - installs packages from `Brewfile`
+  - installs shared CLI packages with Homebrew, or MacPorts on older macOS when available
+  - installs GUI apps and font casks from `Brewfile`
 - On Linux:
-  - installs a smaller baseline set with `apt-get` or `dnf`
+  - installs the shared CLI package set with `apt-get` or `dnf` when available
 - On both:
   - installs Oh My Zsh if missing
   - installs or updates:
@@ -98,6 +99,7 @@ cp ~/.dotfiles/env/private.local.sh.example ~/.dotfiles/env/private.local.sh
 Typical `private.local.sh` uses:
 
 - Android SDK paths
+- `JAVA_HOME` overrides for a machine-specific JDK
 - local tools that are not part of the shared package set
 - machine-specific PATH additions
 
@@ -111,7 +113,7 @@ Typical `~/.gitconfig.local` uses:
 
 - `nvim` is the only editor managed by this repo.
 - Ghostty expects `Maple Mono NF CN`; the Brewfile includes the matching font cask on macOS.
-- Linux bootstrap currently installs a baseline set, not a full equivalent of the macOS Brewfile.
+- `Brewfile` is cask-only; shared CLI packages are managed by `scripts/bootstrap.sh`.
 - `zoxide` integration is enabled when the command exists.
 - `bun` is optional and is expected to be managed from `private.local.sh` if used.
 - `.psqlrc` is managed here, but `psql` itself is not installed by this repo today.

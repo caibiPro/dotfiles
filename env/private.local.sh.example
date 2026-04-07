@@ -1,5 +1,9 @@
 # Machine-specific paths and overrides go here.
 
+# Override the auto-detected JDK from zsh/.zprofile.
+# Use 1.8 for JDK 8 on macOS; -v 8 may match newer versions.
+# export JAVA_HOME="$(/usr/libexec/java_home -v 1.8 2>/dev/null)"
+
 # export ANDROID_HOME="$HOME/Library/Android/sdk"
 # path=(
 #   "$ANDROID_HOME/platform-tools"

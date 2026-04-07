@@ -13,7 +13,7 @@
 - `psql`：PostgreSQL 交互客户端默认配置
 - `ghostty`：macOS 终端界面配置
 - `nvim`：唯一受管的编辑器
-- `Brewfile`：macOS 软件包清单
+- `Brewfile`：macOS GUI 应用和字体 cask 清单
 - GitHub Actions：shell 和 zsh 的基础检查
 
 ## 目录结构
@@ -61,9 +61,10 @@ cd ~/.dotfiles
 
 - 在 macOS 上：
   - 如果缺 Homebrew，就先安装
-  - 按 `Brewfile` 安装软件
+  - 用 Homebrew 安装共享 CLI 工具；旧版 macOS 且有 MacPorts 时优先用 MacPorts
+  - 按 `Brewfile` 安装 GUI 应用和字体 cask
 - 在 Linux 上：
-  - 用 `apt-get` 或 `dnf` 安装一组较小的基础工具
+  - 尽量用 `apt-get` 或 `dnf` 安装共享 CLI 工具
 - 在两个平台上都会：
   - 如果缺 Oh My Zsh，就安装它
   - 安装或更新：
@@ -97,6 +98,7 @@ cp ~/.dotfiles/env/private.local.sh.example ~/.dotfiles/env/private.local.sh
 `private.local.sh` 适合放：
 
 - Android SDK 路径
+- 当前机器的 `JAVA_HOME` 覆盖配置
 - 不属于共享软件清单的本地工具
 - 机器专属 PATH
 
@@ -110,7 +112,7 @@ cp ~/.dotfiles/env/private.local.sh.example ~/.dotfiles/env/private.local.sh
 
 - 这个仓库只管理 `nvim`，不再管理 `vim`。
 - Ghostty 使用 `Maple Mono NF CN`；macOS 下 Brewfile 已包含对应字体 cask。
-- Linux 的 bootstrap 目前只覆盖基础工具，不等价于 macOS 的 Brewfile。
+- `Brewfile` 只管理 cask；共享 CLI 工具由 `scripts/bootstrap.sh` 管理。
 - 如果系统里存在 `zoxide`，zsh 会自动启用它的集成。
 - `bun` 是可选工具；如果要用，建议通过 `private.local.sh` 管理。
 - `.psqlrc` 已纳入管理，但这个仓库目前不会自动安装 `psql` 本体。
