@@ -45,12 +45,13 @@ fi
 # Java configuration — auto-detect; switch with jdk() at runtime
 if [[ -z "$JAVA_HOME" ]]; then
     if [[ -x /usr/libexec/java_home ]]; then
-        # macOS: system default (highest installed version)
-        JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)"
+        # macOS: prefer LTS 17, fall back to highest installed
+        JAVA_HOME="$(/usr/libexec/java_home -v 17 2>/dev/null)"
+        [[ -z "$JAVA_HOME" ]] && JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)"
     elif [[ -d /usr/lib/jvm ]]; then
-        # Linux: pick first available JDK
+        # Linux: prefer Java 17, fall back to highest available (NOn = reverse numeric sort)
         local _d
-        for _d in /usr/lib/jvm/java-*-openjdk-*(N); do
+        for _d in /usr/lib/jvm/java-17-openjdk-*(N) /usr/lib/jvm/java-*-openjdk-*(NOn); do
             [[ -x "$_d/bin/java" ]] && JAVA_HOME="$_d" && break
         done
         unset _d

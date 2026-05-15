@@ -14,8 +14,8 @@ jdk() {
 		/usr/libexec/java_home -V 2>&1 | tail -n +2
 		return 1
 	fi
+	path=("$home/bin" ${path:#"$JAVA_HOME/bin"})
 	export JAVA_HOME="$home"
-	path=("$JAVA_HOME/bin" ${path:#"$JAVA_HOME/bin"})
 	export PATH
 	rehash 2>/dev/null || true
 	echo "JAVA_HOME -> $JAVA_HOME"
