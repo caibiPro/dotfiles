@@ -19,14 +19,29 @@ opt.softtabstop = 4
 opt.expandtab = true
 opt.smartindent = true
 opt.termguicolors = true
-opt.background = "light"
 opt.signcolumn = "yes"
 opt.updatetime = 250
 opt.splitright = true
 opt.splitbelow = true
 opt.cursorline = true
 
-vim.cmd.colorscheme("shine")
+local function system_appearance()
+  -- macOS only: "Dark" in dark mode, error/empty in light mode
+  local out = vim.trim(vim.fn.system("defaults read -g AppleInterfaceStyle 2>/dev/null"))
+  return out == "Dark" and "dark" or "light"
+end
+
+local function apply_appearance()
+  local mode = system_appearance()
+  opt.background = mode
+  vim.cmd.colorscheme(mode == "dark" and "habamax" or "shine")
+end
+
+apply_appearance()
+
+vim.api.nvim_create_autocmd("FocusGained", {
+  callback = apply_appearance,
+})
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 vim.keymap.set("n", "<leader>w", "<cmd>write<CR>", { silent = true, desc = "Write buffer" })
