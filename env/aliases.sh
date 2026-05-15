@@ -4,10 +4,10 @@ alias ...='cd ../..'
 alias ~='cd ~'
 
 # Easy report
-if command -v eza >/dev/null 2>&1; then
-	alias ls='eza --group-directories-first --icons=auto'
-	alias l='eza -lg --group-directories-first --icons=auto'
-	alias ll='eza -lag --group-directories-first --icons=auto'
+if ls --color=auto /dev/null >/dev/null 2>&1; then
+	alias ls='ls -1h --color=auto'
+	alias l='ls -lh --color=auto'
+	alias ll='ls -lAh --color=auto'
 else
 	alias ls='ls -1h -G'
 	alias l='ls -l'

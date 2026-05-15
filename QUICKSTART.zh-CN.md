@@ -13,7 +13,7 @@
 5. `nvim`
 6. `gh`
 
-`eza` 和 `yq` 先放后面，不急着一起学。
+`yq` 先放后面，不急着一起学。
 
 ## rg
 
@@ -119,19 +119,6 @@ gh issue list
 ```
 
 如果你经常看 PR、issue、workflow，这个很值。
-
-## eza
-
-用途：更好的 `ls`。
-
-```sh
-eza
-eza -l
-eza -la
-eza --tree
-```
-
-你现在的 `ls` / `l` / `ll` 会在装了 `eza` 后自动接过去，所以日常直接用 `ls` 就行。
 
 ## yq
 

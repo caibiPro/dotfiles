@@ -8,7 +8,6 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # Omit a field to reuse brew_name.
 COMMON_PACKAGES=(
   bat
-  eza
   fd:fd-find:fd-find:
   fzf
   gh

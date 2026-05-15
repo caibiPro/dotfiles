@@ -13,7 +13,7 @@ Start with these 6:
 5. `nvim`
 6. `gh`
 
-Leave `eza` and `yq` for later.
+Leave `yq` for later.
 
 ## rg
 
@@ -119,19 +119,6 @@ gh issue list
 ```
 
 If you use GitHub often, this is worth learning early.
-
-## eza
-
-Use it as a better `ls`.
-
-```sh
-eza
-eza -l
-eza -la
-eza --tree
-```
-
-Your `ls` / `l` / `ll` aliases switch to `eza` automatically once it is installed.
 
 ## yq
 
