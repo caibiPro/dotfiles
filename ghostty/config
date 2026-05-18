@@ -5,7 +5,7 @@ font-size = 13
 font-style = "Medium"
 
 # --- Theme and Colors ---
-theme = dark:GitHub Dark Default,light:GitHub Light Default
+theme = dark:GitHub Dark Dimmed,light:GitHub Light Default
 macos-icon = paper
 
 # --- Window and Appearance ---
