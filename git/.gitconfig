@@ -68,3 +68,5 @@
     added = green
     changed = yellow
     untracked = red
+[http]
+	postBuffer = 524288000

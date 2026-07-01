@@ -42,3 +42,7 @@ macos-option-as-alt = true
 
 # --- Performance ---
 scrollback-limit = 100000
+
+# --- Keyboard Scroll ---
+keybind = cmd+k=scroll_page_lines:-5
+keybind = cmd+j=scroll_page_lines:5
