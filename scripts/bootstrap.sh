@@ -10,7 +10,6 @@ COMMON_PACKAGES=(
   bat
   fd:fd-find:fd-find:
   fzf
-  gh
   git
   jq
   neovim

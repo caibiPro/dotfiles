@@ -4,14 +4,13 @@
 
 ## 优先顺序
 
-建议先学这 6 个：
+建议先学这 5 个：
 
 1. `rg`
 2. `fd`
 3. `fzf`
 4. `zoxide`
 5. `nvim`
-6. `gh`
 
 `yq` 先放后面，不急着一起学。
 
@@ -106,20 +105,6 @@ nvim file.txt
 v file.txt
 ```
 
-## gh
-
-用途：GitHub CLI。
-
-```sh
-gh auth login
-gh repo view
-gh pr status
-gh pr list
-gh issue list
-```
-
-如果你经常看 PR、issue、workflow，这个很值。
-
 ## yq
 
 用途：处理 YAML。
@@ -150,7 +135,6 @@ fd
 z
 v
 git s
-gh pr status
 ```
 
 ## 最短记忆版
@@ -159,5 +143,4 @@ gh pr status
 - 找文件用 `fd`
 - 跳目录用 `z`
 - 编辑用 `v`
-- GitHub 用 `gh`
 - 终端里筛选就接 `fzf`

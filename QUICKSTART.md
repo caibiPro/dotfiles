@@ -4,14 +4,13 @@ This guide focuses on the tools in this dotfiles setup that are worth learning f
 
 ## Priority
 
-Start with these 6:
+Start with these 5:
 
 1. `rg`
 2. `fd`
 3. `fzf`
 4. `zoxide`
 5. `nvim`
-6. `gh`
 
 Leave `yq` for later.
 
@@ -106,20 +105,6 @@ You also have:
 v file.txt
 ```
 
-## gh
-
-Use it as the GitHub CLI.
-
-```sh
-gh auth login
-gh repo view
-gh pr status
-gh pr list
-gh issue list
-```
-
-If you use GitHub often, this is worth learning early.
-
 ## yq
 
 Use it to work with YAML.
@@ -150,7 +135,6 @@ fd
 z
 v
 git s
-gh pr status
 ```
 
 ## Shortest Memory Version
@@ -159,5 +143,4 @@ gh pr status
 - Use `fd` to find files
 - Use `z` to jump directories
 - Use `v` to edit
-- Use `gh` for GitHub
 - Pipe into `fzf` when you want fuzzy selection
