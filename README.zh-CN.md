@@ -140,7 +140,7 @@ cp ~/.dotfiles/env/private.local.sh.example ~/.dotfiles/env/private.local.sh
 普通模式和历史：
 
 - `Esc` 进入普通模式，光标从竖线变成方块
-- 普通模式下按 `v`：在 `nvim` 里编辑当前命令
+- 普通模式下按 `v`：进入 visual 选择模式
 - `Ctrl-p` / `Ctrl-n` 会按当前输入前缀搜索历史
 
 fzf：

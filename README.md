@@ -141,7 +141,7 @@ Line editing uses `vi` mode (`bindkey -v`). Insert mode keeps the common emacs k
 Normal mode and history:
 
 - `Esc` enters normal mode; the cursor turns from a bar into a block
-- `v` in normal mode edits the command in `nvim`
+- `v` in normal mode starts visual selection
 - `Ctrl-p` / `Ctrl-n` search command history by the current prefix
 
 fzf:

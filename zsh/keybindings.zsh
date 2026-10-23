@@ -15,11 +15,10 @@ bindkey -M viins '^[d' kill-word
 bindkey -M viins '^U' backward-kill-line
 bindkey -M viins '^K' kill-line
 
-# Edit the current command in $EDITOR: Ctrl-X Ctrl-E in insert mode, v in normal mode
+# Edit the current command in $EDITOR (v in normal mode stays visual mode)
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M viins '^X^E' edit-command-line
-bindkey -M vicmd 'v' edit-command-line
 
 # Cursor shape: blinking bar in insert mode, steady block in normal mode
 _vi_cursor_shape() {
