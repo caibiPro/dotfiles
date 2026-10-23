@@ -38,7 +38,7 @@ shell-integration-features = ssh-env,ssh-terminfo
 
 # --- Other ---
 quit-after-last-window-closed = true
-notify-on-command-finish = always
+notify-on-command-finish = unfocused
 macos-option-as-alt = true
 
 # --- Performance ---
@@ -47,3 +47,10 @@ scrollback-limit = 10485760
 # --- Keyboard Scroll ---
 keybind = cmd+k=scroll_page_lines:-5
 keybind = cmd+j=scroll_page_lines:5
+
+# --- Line Editing ---
+# Cmd-Left/Right: line start/end (^A/^E); Option-Left/Right: word back/forward
+keybind = cmd+arrow_left=text:\x01
+keybind = cmd+arrow_right=text:\x05
+keybind = alt+arrow_left=esc:b
+keybind = alt+arrow_right=esc:f
