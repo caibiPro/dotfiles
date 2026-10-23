@@ -122,30 +122,45 @@ cp ~/.dotfiles/env/private.local.sh.example ~/.dotfiles/env/private.local.sh
 ### Shell
 
 - `reload`：以 login shell 方式重启当前 shell
-- `..` / `...`：返回上级目录
 - `mkd <dir>`：创建目录并进入
-- `fdir <pattern>`：用 `fd` 或 `fdfind` 查目录
-- `ff <pattern>`：用 `fd` 或 `fdfind` 查文件
-- `sgrep <pattern>`：用 `rg` 搜文本，并显示上下文
-- `v`：打开 `nvim`
-- `h`：查看 shell 历史
+- `jdk <version>`：切换 JDK（macOS）
+- `l` / `ll`：详细列表，`ll` 包含隐藏文件
+- `gst`：`git status`
+- 直接输入目录名（如 `..`、`~`、`src`）即可 `cd` 进去（`AUTO_CD`）
+- `z <关键词>` / `zi`：跳到常用目录（zoxide）
 
-Zsh 行为：
+命令行编辑使用 `vi` 模式（`bindkey -v`），插入模式下保留常用的 emacs 键：
 
-- 命令行编辑使用 `vi` 模式，也就是 `bindkey -v`
+- `Ctrl-a` / `Ctrl-e`，或 `Cmd-左` / `Cmd-右`：行首 / 行尾
+- `Alt-b` / `Alt-f`，或 `Option-左` / `Option-右`：按词后退 / 前进
+- `Ctrl-w` 或 `Option-Delete`：删除前一个词；`Alt-d`：删除后一个词
+- `Ctrl-u` / `Ctrl-k`：删到行首 / 行尾
+- `Ctrl-x Ctrl-e`：在 `nvim` 里编辑当前命令
+
+普通模式和历史：
+
+- `Esc` 进入普通模式，光标从竖线变成方块
+- 普通模式下按 `v`：在 `nvim` 里编辑当前命令
 - `Ctrl-p` / `Ctrl-n` 会按当前输入前缀搜索历史
-- `Esc` 会进入 normal 模式编辑命令行
-- 提示符使用 `pure`
+
+fzf：
+
+- `Ctrl-r`：搜索历史
+- `Ctrl-t`：插入文件路径
+- `Alt-c`：`cd` 进子目录（用 `fd`，带预览）
+- `**<Tab>`：模糊补全，例如 `cd src/**<Tab>`
+
+提示符使用 `pure`。
 
 ### tmux
 
 前缀键：
 
-- `Ctrl-a`
+- `Ctrl-b`
 
 常用操作：
 
-- `Ctrl-a r`：重载 tmux 配置
+- `Ctrl-b r`：重载 tmux 配置
 - `Alt-h/j/k/l`：在 pane 之间移动
 - `Alt-p` / `Alt-n`：切到上一个或下一个 window
 - `-` / `\`：在当前目录下做纵向或横向分屏
@@ -162,17 +177,13 @@ Copy mode：
 
 ### Git
 
-常用别名：
+没有自定义 alias，shell 里的 `gst` 等于 `git status`。主要默认配置：
 
-- `git s`：简短状态
-- `git a`：`git add`
-- `git aa`：`git add -A`
-- `git d`：带 patch 和统计信息的 diff
-- `git df`：按单词高亮的 diff
-- `git ds`：staged diff
-- `git lg`：图形化日志
-- `git sw`：切分支
-- `git remotes`：查看远端
+- `pull.ff = only`、`fetch.prune`、`rebase.autoStash`
+- `push.autoSetupRemote`：新分支第一次 `git push` 时自动设置 upstream
+- `diff.algorithm = histogram`、`diff.colorMoved`
+- `merge.conflictStyle = zdiff3`、`rerere.enabled`
+- `branch.sort = -committerdate`
 
 ### psql
 

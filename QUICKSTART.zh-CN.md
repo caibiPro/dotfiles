@@ -25,12 +25,6 @@ rg -n "TODO"
 rg "function_name" .
 ```
 
-你现在还有：
-
-```sh
-sgrep keyword
-```
-
 ## fd
 
 用途：找文件和目录，优先替代很多 `find`。
@@ -41,13 +35,6 @@ fd '\.md$'
 fd config ~
 fd --type d src
 fd --type f json
-```
-
-你现在还有：
-
-```sh
-ff pattern
-fdir pattern
 ```
 
 ## fzf
@@ -65,6 +52,12 @@ git branch | fzf
 ```sh
 某个命令 | fzf
 ```
+
+内置快捷键：
+
+- `Ctrl-r`：搜索历史
+- `Ctrl-t`：插入文件路径
+- `Alt-c`：`cd` 进子目录
 
 ## zoxide
 
@@ -99,12 +92,6 @@ nvim file.txt
 - `<Space>q`：退出
 - `<Space>e`：打开文件浏览器
 
-你现在还有：
-
-```sh
-v file.txt
-```
-
 ## yq
 
 用途：处理 YAML。
@@ -118,14 +105,15 @@ yq '.jobs.build' .github/workflows/check.yml
 
 ## 你现在这套工作流里最常用的入口
 
-- 搜文本：`rg` 或 `sgrep`
-- 找文件：`fd` 或 `ff`
-- 找目录：`fdir`
+- 搜文本：`rg`
+- 找文件：`fd`
+- 找目录并进入：`Alt-c`
 - 跳目录：`z ...`
-- 编辑：`v file`
+- 搜历史：`Ctrl-r`
+- 编辑：`nvim file`
 - 重载 shell：`reload`
 - tmux 前缀：`Ctrl-b`
-- Git 状态：`git s`
+- Git 状态：`gst`
 
 ## 一周最短练习清单
 
@@ -133,8 +121,8 @@ yq '.jobs.build' .github/workflows/check.yml
 rg
 fd
 z
-v
-git s
+nvim
+gst
 ```
 
 ## 最短记忆版
@@ -142,5 +130,5 @@ git s
 - 找内容用 `rg`
 - 找文件用 `fd`
 - 跳目录用 `z`
-- 编辑用 `v`
+- 编辑用 `nvim`
 - 终端里筛选就接 `fzf`

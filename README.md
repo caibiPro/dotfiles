@@ -123,30 +123,45 @@ Typical `~/.gitconfig.local` uses:
 ### Shell
 
 - `reload`: restart the current shell as a login shell
-- `..` / `...`: move up directories
 - `mkd <dir>`: create a directory and enter it
-- `fdir <pattern>`: find directories with `fd` or `fdfind`
-- `ff <pattern>`: find files with `fd` or `fdfind`
-- `sgrep <pattern>`: search text with `rg`, with context lines
-- `v`: open `nvim`
-- `h`: show shell history
+- `jdk <version>`: switch the JDK (macOS)
+- `l` / `ll`: long listing; `ll` includes dotfiles
+- `gst`: `git status`
+- type a directory name such as `..`, `~` or `src` to `cd` into it (`AUTO_CD`)
+- `z <keyword>` / `zi`: jump to a frequently used directory (zoxide)
 
-Zsh behavior:
+Line editing uses `vi` mode (`bindkey -v`). Insert mode keeps the common emacs keys:
 
-- shell editing uses `vi` mode via `bindkey -v`
+- `Ctrl-a` / `Ctrl-e`, or `Cmd-Left` / `Cmd-Right`: line start / end
+- `Alt-b` / `Alt-f`, or `Option-Left` / `Option-Right`: word back / forward
+- `Ctrl-w` or `Option-Delete`: delete the previous word; `Alt-d`: delete the next word
+- `Ctrl-u` / `Ctrl-k`: delete to line start / end
+- `Ctrl-x Ctrl-e`: edit the command in `nvim`
+
+Normal mode and history:
+
+- `Esc` enters normal mode; the cursor turns from a bar into a block
+- `v` in normal mode edits the command in `nvim`
 - `Ctrl-p` / `Ctrl-n` search command history by the current prefix
-- `Esc` enters normal mode for command-line editing
-- prompt is `pure`
+
+fzf:
+
+- `Ctrl-r`: search history
+- `Ctrl-t`: insert a file path
+- `Alt-c`: `cd` into a subdirectory (uses `fd`, with preview)
+- `**<Tab>`: fuzzy completion, for example `cd src/**<Tab>`
+
+Prompt is `pure`.
 
 ### tmux
 
 Prefix key:
 
-- `Ctrl-a`
+- `Ctrl-b`
 
 Common actions:
 
-- `Ctrl-a r`: reload tmux config
+- `Ctrl-b r`: reload tmux config
 - `Alt-h/j/k/l`: move between panes
 - `Alt-p` / `Alt-n`: previous or next window
 - `-` / `\`: split vertically or horizontally in the current directory
@@ -163,17 +178,13 @@ Copy mode:
 
 ### Git
 
-Common aliases:
+No custom aliases; `gst` in the shell runs `git status`. Notable defaults:
 
-- `git s`: short status
-- `git a`: `git add`
-- `git aa`: `git add -A`
-- `git d`: diff with patch and stats
-- `git df`: diff with color words
-- `git ds`: staged diff
-- `git lg`: graph log
-- `git sw`: switch branch
-- `git remotes`: show remotes
+- `pull.ff = only`, `fetch.prune`, `rebase.autoStash`
+- `push.autoSetupRemote`: first `git push` on a new branch sets the upstream
+- `diff.algorithm = histogram`, `diff.colorMoved`
+- `merge.conflictStyle = zdiff3`, `rerere.enabled`
+- `branch.sort = -committerdate`
 
 ### psql
 

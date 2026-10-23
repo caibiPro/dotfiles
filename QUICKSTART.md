@@ -25,12 +25,6 @@ rg -n "TODO"
 rg "function_name" .
 ```
 
-You also have:
-
-```sh
-sgrep keyword
-```
-
 ## fd
 
 Use it to find files and directories. It replaces many `find` cases.
@@ -41,13 +35,6 @@ fd '\.md$'
 fd config ~
 fd --type d src
 fd --type f json
-```
-
-You also have:
-
-```sh
-ff pattern
-fdir pattern
 ```
 
 ## fzf
@@ -65,6 +52,12 @@ The main pattern to remember is:
 ```sh
 some-command | fzf
 ```
+
+Built-in shortcuts:
+
+- `Ctrl-r`: search history
+- `Ctrl-t`: insert a file path
+- `Alt-c`: `cd` into a subdirectory
 
 ## zoxide
 
@@ -99,12 +92,6 @@ Most important keys:
 - `<Space>q`: quit
 - `<Space>e`: open the file explorer
 
-You also have:
-
-```sh
-v file.txt
-```
-
 ## yq
 
 Use it to work with YAML.
@@ -118,14 +105,15 @@ The simplest way to think about it: `yq` is the YAML version of `jq`.
 
 ## Most Useful Entry Points In This Setup
 
-- Search text: `rg` or `sgrep`
-- Find files: `fd` or `ff`
-- Find directories: `fdir`
+- Search text: `rg`
+- Find files: `fd`
+- Find and enter directories: `Alt-c`
 - Jump to directories: `z ...`
-- Edit files: `v file`
+- Search history: `Ctrl-r`
+- Edit files: `nvim file`
 - Reload the shell: `reload`
 - tmux prefix: `Ctrl-b`
-- Git status: `git s`
+- Git status: `gst`
 
 ## One-Week Practice List
 
@@ -133,8 +121,8 @@ The simplest way to think about it: `yq` is the YAML version of `jq`.
 rg
 fd
 z
-v
-git s
+nvim
+gst
 ```
 
 ## Shortest Memory Version
@@ -142,5 +130,5 @@ git s
 - Use `rg` to find text
 - Use `fd` to find files
 - Use `z` to jump directories
-- Use `v` to edit
+- Use `nvim` to edit
 - Pipe into `fzf` when you want fuzzy selection
