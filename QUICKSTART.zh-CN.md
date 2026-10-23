@@ -124,7 +124,7 @@ yq '.jobs.build' .github/workflows/check.yml
 - 跳目录：`z ...`
 - 编辑：`v file`
 - 重载 shell：`reload`
-- tmux 前缀：`Ctrl-a`
+- tmux 前缀：`Ctrl-b`
 - Git 状态：`git s`
 
 ## 一周最短练习清单

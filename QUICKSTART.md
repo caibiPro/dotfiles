@@ -124,7 +124,7 @@ The simplest way to think about it: `yq` is the YAML version of `jq`.
 - Jump to directories: `z ...`
 - Edit files: `v file`
 - Reload the shell: `reload`
-- tmux prefix: `Ctrl-a`
+- tmux prefix: `Ctrl-b`
 - Git status: `git s`
 
 ## One-Week Practice List

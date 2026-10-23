@@ -65,6 +65,13 @@ setopt PROMPT_SUBST           # Allow prompt substitution
 # fzf / zoxide integration
 if [[ -t 0 ]]; then
   if command -v fzf >/dev/null 2>&1; then
+    # Alt-C: use fd for directory search, with preview
+    if command -v fd >/dev/null 2>&1; then
+      export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
+    elif command -v fdfind >/dev/null 2>&1; then
+      export FZF_ALT_C_COMMAND='fdfind --type d --hidden --exclude .git'
+    fi
+    export FZF_ALT_C_OPTS="--preview 'ls -la {}'"
     source <(fzf --zsh)
   fi
 
