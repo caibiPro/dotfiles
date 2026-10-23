@@ -16,7 +16,12 @@ jobs:
         run: shellcheck scripts/*.sh
 
       - name: Zsh syntax check
-        run: zsh -n zsh/.zprofile zsh/.zshrc zsh/history.zsh zsh/keybindings.zsh env/aliases.sh env/functions.sh env/environment.sh
+        # zsh -n checks only its first file argument; check each file separately
+        run: |
+          for f in zsh/.zprofile zsh/.zshrc zsh/history.zsh zsh/keybindings.zsh env/aliases.sh env/functions.sh env/environment.sh; do
+            echo "zsh -n $f"
+            zsh -n "$f" || exit 1
+          done
 
       - name: Lint Markdown
         uses: tomwhross/write-good-action@v1.6
