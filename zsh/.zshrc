@@ -26,7 +26,6 @@ ZSH_THEME=""
 
 # Plugins configuration
 plugins=(
-  git
   zsh-autosuggestions
   fast-syntax-highlighting
   history-substring-search
