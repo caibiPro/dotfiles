@@ -10,7 +10,7 @@ Personal dotfiles for a macOS-first, Linux-compatible terminal workflow.
 
 - `zsh` for login-shell environment and interactive shell behavior
 - `tmux` for terminal multiplexing
-- `git` for aliases and defaults
+- `git` for shared defaults
 - `psql` for interactive PostgreSQL defaults
 - `ghostty` for terminal UI on macOS
 - `nvim` as the only editor managed by this repo
@@ -112,9 +112,9 @@ Typical `~/.gitconfig.local` uses:
 ## Tooling Notes
 
 - `nvim` is the only editor managed by this repo.
-- Ghostty expects `Maple Mono NF CN`; the Brewfile includes the matching font cask on macOS.
+- Ghostty uses `Google Sans Code` with `Maple Mono NF CN` as the fallback for CJK and icons; the Brewfile only installs `Maple Mono NF CN`.
 - `Brewfile` is cask-only; shared CLI packages are managed by `scripts/bootstrap.sh`.
-- `zoxide` integration is enabled when the command exists.
+- `fzf` and `zoxide` integrations are enabled when the commands exist.
 - `bun` is optional and is expected to be managed from `private.local.sh` if used.
 - `.psqlrc` is managed here, but `psql` itself is not installed by this repo today.
 
@@ -124,9 +124,12 @@ Typical `~/.gitconfig.local` uses:
 
 - `reload`: restart the current shell as a login shell
 - `mkd <dir>`: create a directory and enter it
-- `jdk <version>`: switch the JDK (macOS)
+- `jdk <version>`: switch the JDK (macOS), for example `jdk 17`
 - `l` / `ll`: long listing; `ll` includes dotfiles
 - `gst`: `git status`
+- `doc`: go to `~/Documents` and list it
+- `c`: `clear`; `:q`: `exit`
+- `cat` runs `bat` when installed; `rm`, `cp` and `mv` ask before overwriting or deleting
 - type a directory name such as `..`, `~` or `src` to `cd` into it (`AUTO_CD`)
 - `z <keyword>` / `zi`: jump to a frequently used directory (zoxide)
 
@@ -136,13 +139,15 @@ Line editing uses `vi` mode (`bindkey -v`). Insert mode keeps the common emacs k
 - `Alt-b` / `Alt-f`, or `Option-Left` / `Option-Right`: word back / forward
 - `Ctrl-w` or `Option-Delete`: delete the previous word; `Alt-d`: delete the next word
 - `Ctrl-u` / `Ctrl-k`: delete to line start / end
-- `Ctrl-x Ctrl-e`: edit the command in `nvim`
+- `Ctrl-x Ctrl-e`: edit the command in `nvim`; `:wq` runs it, `:cq` cancels
+- `Right` or `Ctrl-e` at the end of the line: accept the grey autosuggestion
 
 Normal mode and history:
 
-- `Esc` enters normal mode; the cursor turns from a bar into a block
-- `v` in normal mode starts visual selection
-- `Ctrl-p` / `Ctrl-n` search command history by the current prefix
+- `Esc` enters normal mode at once (`KEYTIMEOUT=1`); the cursor turns from a bar into a block
+- standard vi motions and edits work (`w`, `b`, `0`, `$`, `dw`, `cw`, ...); `v` starts visual selection
+- `u` / `U`: undo / redo; `gg` / `G`: oldest / newest history entry
+- `Ctrl-p` / `Ctrl-n` in insert mode, `k` / `j` in normal mode: search history by the current prefix
 
 fzf:
 
@@ -155,19 +160,24 @@ Prompt is `pure`.
 
 ### tmux
 
-Prefix key:
+Prefix key: `Ctrl-b` (press it twice to send `Ctrl-b` to the program).
 
-- `Ctrl-b`
+Without the prefix:
 
-Common actions:
-
-- `Ctrl-b r`: reload tmux config
 - `Alt-h/j/k/l`: move between panes
-- `Alt-p` / `Alt-n`: previous or next window
-- `-` / `\`: split vertically or horizontally in the current directory
-- `_` / `|`: full-height or full-width splits in the current directory
+- `Alt-H/J/K/L`: resize the current pane
 - `Alt-z`: zoom or unzoom the current pane
+- `Alt-p` / `Alt-n`: previous or next window
 - `Alt-v`: enter copy mode
+
+With the prefix:
+
+- `-` / `\`: split into top/bottom or left/right panes in the current directory
+- `_` / `|`: full-width or full-height split in the current directory
+- `x` / `X`: kill the pane or the window
+- `/` / `?`: search the pane output forward or backward
+- `r`: reload tmux config
+- tmux defaults such as `c` (new window), `1-9` (select window), `,` (rename), `d` (detach) and `s` (sessions) are unchanged
 
 Copy mode:
 
@@ -175,6 +185,20 @@ Copy mode:
 - `V`: select line
 - `Ctrl-v`: rectangle selection
 - `y`: copy to the system clipboard
+- `Enter`: leave copy mode
+- dragging with the mouse also copies to the system clipboard
+
+Status bar sits at the bottom with a transparent background, so it follows the Ghostty light/dark theme. It shows the session name, windows (`Z` marks a zoomed pane), a `PREFIX` hint while the prefix is active, and the hostname.
+
+### Ghostty
+
+- theme follows the system: `GitHub Dark Dimmed` / `GitHub Light Default`
+- `Option` acts as `Alt` (`macos-option-as-alt`)
+- `Cmd-Left` / `Cmd-Right` send `Ctrl-a` / `Ctrl-e`; `Option-Left` / `Option-Right` move by word
+- `Cmd-k` / `Cmd-j`: scroll up or down 5 lines
+- selecting text copies it to the clipboard
+- a notification is sent when a long command finishes while the window is unfocused
+- `Cmd-Shift-,`: reload config
 
 ### Git
 
@@ -185,16 +209,18 @@ No custom aliases; `gst` in the shell runs `git status`. Notable defaults:
 - `diff.algorithm = histogram`, `diff.colorMoved`
 - `merge.conflictStyle = zdiff3`, `rerere.enabled`
 - `branch.sort = -committerdate`
+- `merge.tool = nvimdiff`
+- `~/.gitconfig.local` is included last, so it overrides shared settings
 
 ### psql
 
 Current defaults:
 
+- prompt shows `user@host:port` and the database
 - `NULL` is shown as `[NULL]`
 - wide output uses `less -S`
-- `\x auto` is enabled
 - `\timing` is enabled
-- interactive transaction errors use `ON_ERROR_ROLLBACK interactive`
+- history is kept per database in `~/.psql_history_<dbname>`, ignoring duplicates
 
 ### Neovim
 
@@ -208,6 +234,8 @@ Current built-in mappings:
 - `<leader>q`: quit
 - `<leader>e`: open file explorer
 - `<Esc>` in normal mode: clear search highlight
+
+Colorscheme follows the macOS appearance (`habamax` dark, `shine` light).
 
 ## CI
 
