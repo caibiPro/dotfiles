@@ -127,6 +127,7 @@ Typical `~/.gitconfig.local` uses:
 - `jdk <version>`: switch the JDK (macOS), for example `jdk 17`
 - `l` / `ll`: long listing; `ll` includes dotfiles
 - `gst`: `git status`
+- `dps`: `docker ps` with one block per container
 - `doc`: go to `~/Documents` and list it
 - `c`: `clear`; `:q`: `exit`
 - `cat` runs `bat` when installed; `rm`, `cp` and `mv` ask before overwriting or deleting

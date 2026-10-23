@@ -126,6 +126,7 @@ cp ~/.dotfiles/env/private.local.sh.example ~/.dotfiles/env/private.local.sh
 - `jdk <version>`：切换 JDK（macOS），例如 `jdk 17`
 - `l` / `ll`：详细列表，`ll` 包含隐藏文件
 - `gst`：`git status`
+- `dps`：`docker ps`，每个容器分块显示
 - `doc`：进入 `~/Documents` 并列出内容
 - `c`：`clear`；`:q`：`exit`
 - 装了 `bat` 时 `cat` 会调用 `bat`；`rm`、`cp`、`mv` 在删除或覆盖前会先确认

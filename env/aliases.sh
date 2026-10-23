@@ -27,6 +27,9 @@ fi
 # Developer shortcuts
 alias gst='git status'
 
+# Docker
+alias dps="docker ps --format $'Name: {{.Names}}\nImage: {{.Image}}\nStatus: {{.Status}}\nPorts: {{.Ports}}\nCreated: {{.CreatedAt}}\n----------------------------------------'"
+
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
 

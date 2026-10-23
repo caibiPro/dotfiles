@@ -11,7 +11,7 @@ macos-icon = paper
 # --- Window and Appearance ---
 background-opacity = 0.95
 background-blur-radius = 30
-macos-titlebar-style = tabs
+macos-titlebar-style = transparent
 window-padding-x = 10
 window-padding-y = 8
 window-save-state = always

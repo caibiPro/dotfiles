@@ -11,8 +11,9 @@ zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 14
 zstyle ':omz:update' verbose minimal
 
-# Disable marking untracked files under VCS as dirty
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+# Include untracked files in dirty checks for both Oh My Zsh and Pure.
+DISABLE_UNTRACKED_FILES_DIRTY="false"
+PURE_GIT_UNTRACKED_DIRTY=1
 
 # Completion behavior
 COMPLETION_WAITING_DOTS="true"
