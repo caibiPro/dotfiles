@@ -17,7 +17,7 @@ COMMON_PACKAGES=(
   npm:npm:npm:npm10
   python@3.13:python3:python3:python313
   ripgrep
-  tldr:tealdeer:tealdeer:tealdeer
+  tealdeer
   tmux
   yq
   zoxide
