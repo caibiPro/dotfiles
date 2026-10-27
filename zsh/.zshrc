@@ -18,6 +18,10 @@ PURE_GIT_UNTRACKED_DIRTY=1
 # Completion behavior
 COMPLETION_WAITING_DOTS="true"
 
+# Skip bracketed-paste-magic and url-quote-magic: they replay pasted text
+# key by key through every widget, making multi-line pastes slow.
+DISABLE_MAGIC_FUNCTIONS="true"
+
 # Plugin tuning
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
