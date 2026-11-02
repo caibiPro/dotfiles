@@ -208,9 +208,16 @@ install_linux_packages() {
   local skipped=()
   local entries=()
   local base_pkgs=(zsh)
+  local apt_opts=() dnf_opts=()
   mapfile -t entries < <(linux_package_entries)
   # A headless server has no X display for xclip; tmux and nvim use OSC 52 instead.
-  [[ "$SERVER_MODE" -eq 1 ]] || base_pkgs+=(xclip)
+  # Skip recommended packages too: Ubuntu's neovim recommends xclip.
+  if [[ "$SERVER_MODE" -eq 1 ]]; then
+    apt_opts=(--no-install-recommends)
+    dnf_opts=(--setopt=install_weak_deps=False)
+  else
+    base_pkgs+=(xclip)
+  fi
 
   if have apt-get; then
     log "installing Linux packages with apt-get"
@@ -225,7 +232,7 @@ install_linux_packages() {
         skipped+=("$name")
       fi
     done
-    sudo apt-get install -y "${pkgs[@]}"
+    sudo apt-get install -y ${apt_opts[@]+"${apt_opts[@]}"} "${pkgs[@]}"
   elif have dnf; then
     log "installing Linux packages with dnf"
     local pkgs=("${base_pkgs[@]}")
@@ -238,7 +245,7 @@ install_linux_packages() {
         skipped+=("$name")
       fi
     done
-    sudo dnf install -y "${pkgs[@]}"
+    sudo dnf install -y ${dnf_opts[@]+"${dnf_opts[@]}"} "${pkgs[@]}"
   else
     log "no supported package manager detected; skipping package installation"
   fi
