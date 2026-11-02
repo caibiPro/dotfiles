@@ -23,6 +23,11 @@ if command -v bat >/dev/null 2>&1; then
 elif command -v batcat >/dev/null 2>&1; then
 	alias cat='batcat --paging=never'
 fi
+# Off macOS (e.g. over SSH) bat may be too old to detect a light terminal, or sit
+# behind tmux, which does not report the background. ansi follows the terminal palette.
+if [ "$(uname -s)" != "Darwin" ] && [ -z "${BAT_THEME:-}" ]; then
+	export BAT_THEME=ansi
+fi
 # Debian/Ubuntu install fd as fdfind
 if ! command -v fd >/dev/null 2>&1 && command -v fdfind >/dev/null 2>&1; then
 	alias fd='fdfind'
