@@ -65,6 +65,7 @@ cd ~/.dotfiles
   - 按 `Brewfile` 安装 GUI 应用和字体 cask
 - 在 Linux 上：
   - 尽量用 `apt-get` 或 `dnf` 安装 `zsh`、`xclip` 和共享 CLI 工具
+  - 在 Ubuntu 上，Git 低于 2.35 时从 `ppa:git-core/ppa` 升级，因为 `git/.gitconfig` 用了 `merge.conflictStyle = zdiff3`（Ubuntu 22.04 是 2.34）
   - 发行版自带的 Neovim 低于 0.10 时（Ubuntu 22.04 是 0.6），从官方 release 安装到 `/opt/nvim`
 - 在两个平台上都会：
   - 如果缺 Oh My Zsh，就安装它

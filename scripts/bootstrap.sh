@@ -60,15 +60,38 @@ linux_package_entries() {
   done
 }
 
-# nvim/init.lua needs 0.8+; 0.10+ also falls back to OSC 52 for the clipboard over SSH.
-neovim_is_recent() {
-  have nvim || return 1
+# Succeed when the first X.Y in the text is at least <major>.<minor>.
+# Usage: version_at_least "$(cmd --version)" <major> <minor>
+version_at_least() {
   local ver major minor
-  ver="$(nvim --version | head -n1 | grep -oE '[0-9]+\.[0-9]+' | head -n1)"
+  ver="$(echo "$1" | grep -oE '[0-9]+\.[0-9]+' | head -n1)"
   major="${ver%%.*}"
   minor="${ver#*.}"
   [[ "$major" =~ ^[0-9]+$ && "$minor" =~ ^[0-9]+$ ]] || return 1
-  (( major > 0 || minor >= 10 ))
+  (( major > $2 || (major == $2 && minor >= $3) ))
+}
+
+# nvim/init.lua needs 0.8+; 0.10+ also falls back to OSC 52 for the clipboard over SSH.
+neovim_is_recent() {
+  have nvim && version_at_least "$(nvim --version | head -n1)" 0 10
+}
+
+# git/.gitconfig sets merge.conflictStyle = zdiff3, which Git before 2.35 rejects
+# on every command. Ubuntu 22.04 ships 2.34, so upgrade from the Git maintainers' PPA.
+ensure_recent_git() {
+  if have git && version_at_least "$(git --version)" 2 35; then
+    return
+  fi
+
+  if ! have apt-get || ! grep -qx 'ID=ubuntu' /etc/os-release 2>/dev/null; then
+    log "Git is older than 2.35; merge.conflictStyle = zdiff3 in git/.gitconfig will fail"
+    return
+  fi
+
+  log "installing Git from ppa:git-core/ppa (distro Git is older than 2.35)"
+  have add-apt-repository || sudo apt-get install -y --no-install-recommends software-properties-common
+  sudo add-apt-repository -y ppa:git-core/ppa
+  sudo apt-get install -y --no-install-recommends git
 }
 
 # Distro repos such as Ubuntu 22.04 ship Neovim 0.6; install the upstream release instead.
@@ -293,6 +316,7 @@ main() {
       ;;
     Linux)
       install_linux_packages
+      ensure_recent_git
       ensure_recent_neovim
       ;;
     *)

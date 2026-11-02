@@ -66,6 +66,7 @@ What bootstrap does:
   - installs GUI apps and font casks from `Brewfile`
 - On Linux:
   - installs `zsh`, `xclip`, and the shared CLI package set with `apt-get` or `dnf` when available
+  - on Ubuntu, upgrades Git from `ppa:git-core/ppa` when it is older than 2.35, because `git/.gitconfig` uses `merge.conflictStyle = zdiff3` (Ubuntu 22.04 ships 2.34)
   - installs the upstream Neovim release to `/opt/nvim` when the distro package is older than 0.10 (Ubuntu 22.04 ships 0.6)
 - On both:
   - installs Oh My Zsh if missing
