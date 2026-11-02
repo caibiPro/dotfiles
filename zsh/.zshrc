@@ -76,7 +76,14 @@ if [[ -t 0 ]]; then
       export FZF_ALT_C_COMMAND='fdfind --type d --hidden --exclude .git'
     fi
     export FZF_ALT_C_OPTS="--preview 'ls -la {}'"
-    source <(fzf --zsh)
+    if _fzf_init="$(fzf --zsh 2>/dev/null)"; then
+      eval "$_fzf_init"
+    elif [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+      # Debian/Ubuntu fzf older than 0.48 has no --zsh; load its packaged scripts
+      source /usr/share/doc/fzf/examples/key-bindings.zsh
+      [[ -f /usr/share/doc/fzf/examples/completion.zsh ]] && source /usr/share/doc/fzf/examples/completion.zsh
+    fi
+    unset _fzf_init
   fi
 
   if command -v zoxide >/dev/null 2>&1; then

@@ -25,8 +25,14 @@ opt.splitright = true
 opt.splitbelow = true
 opt.cursorline = true
 
+local is_mac = vim.fn.has("mac") == 1
+
 local function system_appearance()
-  -- macOS only: "Dark" in dark mode, error/empty in light mode
+  -- No appearance query off macOS (e.g. over SSH on a server); assume a dark terminal
+  if not is_mac then
+    return "dark"
+  end
+  -- macOS: "Dark" in dark mode, error/empty in light mode
   local out = vim.trim(vim.fn.system("defaults read -g AppleInterfaceStyle 2>/dev/null"))
   return out == "Dark" and "dark" or "light"
 end
@@ -39,9 +45,11 @@ end
 
 apply_appearance()
 
-vim.api.nvim_create_autocmd("FocusGained", {
-  callback = apply_appearance,
-})
+if is_mac then
+  vim.api.nvim_create_autocmd("FocusGained", {
+    callback = apply_appearance,
+  })
+end
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 vim.keymap.set("n", "<leader>w", "<cmd>write<CR>", { silent = true, desc = "Write buffer" })

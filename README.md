@@ -65,7 +65,8 @@ What bootstrap does:
   - installs shared CLI packages with Homebrew, or MacPorts on older macOS when available
   - installs GUI apps and font casks from `Brewfile`
 - On Linux:
-  - installs the shared CLI package set with `apt-get` or `dnf` when available
+  - installs `zsh`, `xclip`, and the shared CLI package set with `apt-get` or `dnf` when available
+  - installs the upstream Neovim release to `/opt/nvim` when the distro package is older than 0.10 (Ubuntu 22.04 ships 0.6)
 - On both:
   - installs Oh My Zsh if missing
   - installs or updates:
@@ -73,6 +74,16 @@ What bootstrap does:
     - `fast-syntax-highlighting`
     - `pure`
   - runs `./scripts/sync.sh`
+
+Bootstrap does not change your login shell. If it reports that the shell is not zsh, run `chsh -s "$(command -v zsh)"` and log in again.
+
+On a headless Linux server, pass `--server`:
+
+```sh
+./scripts/bootstrap.sh --server
+```
+
+It skips `xclip` and the `node`, `npm`, and `python` packages. Without an X display, tmux copies through OSC 52, so the text reaches the clipboard of the terminal you SSH from.
 
 ### 3. Re-sync managed files
 
@@ -236,7 +247,7 @@ Current built-in mappings:
 - `<leader>e`: open file explorer
 - `<Esc>` in normal mode: clear search highlight
 
-Colorscheme follows the macOS appearance (`habamax` dark, `shine` light).
+Colorscheme follows the macOS appearance (`habamax` dark, `shine` light). On other systems it stays on `habamax`.
 
 ## CI
 

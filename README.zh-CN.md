@@ -64,7 +64,8 @@ cd ~/.dotfiles
   - 用 Homebrew 安装共享 CLI 工具；旧版 macOS 且有 MacPorts 时优先用 MacPorts
   - 按 `Brewfile` 安装 GUI 应用和字体 cask
 - 在 Linux 上：
-  - 尽量用 `apt-get` 或 `dnf` 安装共享 CLI 工具
+  - 尽量用 `apt-get` 或 `dnf` 安装 `zsh`、`xclip` 和共享 CLI 工具
+  - 发行版自带的 Neovim 低于 0.10 时（Ubuntu 22.04 是 0.6），从官方 release 安装到 `/opt/nvim`
 - 在两个平台上都会：
   - 如果缺 Oh My Zsh，就安装它
   - 安装或更新：
@@ -72,6 +73,16 @@ cd ~/.dotfiles
     - `fast-syntax-highlighting`
     - `pure`
   - 运行 `./scripts/sync.sh`
+
+脚本不会修改登录 shell。如果它提示当前 shell 不是 zsh，执行 `chsh -s "$(command -v zsh)"` 后重新登录。
+
+在无图形界面的 Linux 服务器上，加 `--server`：
+
+```sh
+./scripts/bootstrap.sh --server
+```
+
+它会跳过 `xclip` 以及 `node`、`npm`、`python`。没有 X display 时，tmux 通过 OSC 52 复制，内容会进入你 SSH 所用终端的剪贴板。
 
 ### 3. 重新同步配置
 
@@ -235,7 +246,7 @@ Leader 键：
 - `<leader>e`：打开文件浏览器
 - 普通模式下 `<Esc>`：清除搜索高亮
 
-配色跟随 macOS 外观（深色 `habamax`，浅色 `shine`）。
+配色跟随 macOS 外观（深色 `habamax`，浅色 `shine`），其他系统固定用 `habamax`。
 
 ## CI
 

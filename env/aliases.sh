@@ -23,6 +23,10 @@ if command -v bat >/dev/null 2>&1; then
 elif command -v batcat >/dev/null 2>&1; then
 	alias cat='batcat --paging=never'
 fi
+# Debian/Ubuntu install fd as fdfind
+if ! command -v fd >/dev/null 2>&1 && command -v fdfind >/dev/null 2>&1; then
+	alias fd='fdfind'
+fi
 
 # Developer shortcuts
 alias gst='git status'
